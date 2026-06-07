@@ -1,16 +1,36 @@
-# React + Vite
+# Allshop — React Webshop
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+En webshop byggd med React som hämtar produkter från DummyJSON API.
 
-Currently, two official plugins are available:
+## Installation
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+1. Klona repot
 
-## React Compiler
+2. Gå in i projektmappen:
+```bash
+   cd REPO-NAMN
+```
+3. Installera beroenden:
+```bash
+   npm install
+```
+4. Starta projektet:
+```bash
+   npm run dev
+```
+5. Öppna webbläsaren och gå till `http://localhost:5173`
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Funktioner
 
-## Expanding the ESLint configuration
+- Produktlista med alla produkter hämtade från DummyJSON API
+- Produktsida med detaljerad information om varje produkt
+- Kundvagn med möjlighet att lägga till, ta bort och ändra antal
+- Checkout-sida med ordersammanfattning och orderbekräftelse
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Debounce
+
+Debounce är implementerat i checkout på + och - knapparna för att ändra kvantitet. När användaren klickar snabbt flera gånger väntar appen 300ms efter sista klicket innan kvantiteten uppdateras. Detta förhindrar onödiga uppdateringar vid snabbklick. Implementationen använder `useRef` och `setTimeout`.
+
+## Felhantering med try...catch
+
+Alla fetch-anrop i `useEffect` är inlindade i try...catch. Om ett anrop misslyckas visas ett felmeddelande för användaren istället för att appen kraschar. `finally` säkerställer att laddningsindikatorn alltid stängs av oavsett om anropet lyckades eller misslyckades.
